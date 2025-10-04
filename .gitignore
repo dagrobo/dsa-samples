@@ -12,6 +12,8 @@ IO_BUFF.$$$
 SP_BUFF.$$$
 dummy.txt
 *.LIS
+PLOT*.HPL
+SPECDAT.TMP
 
 # C extensions
 *.so
