@@ -5,23 +5,29 @@ import sys, os, pyodbc
 from pathlib import Path
 
 dir_import = Path("C:\\temp")
-dir_script = Path(__file__).parent.absolute()    
-dir_work = dir_script / "work"
 
 # Exit codes for this program
 class ExitStatus: Success, Running, Error = range(3)
 
-def import_norsar_files(log, dirname):
-    os.makedirs(dir_work, exist_ok = True)
-    log.info("importing from %s" % dirname)
+def fetch_files(log, dirname):
+    pass
 
-if __name__ == "__main__":
+def import_norsar_files(dirname):    
     try:        
         log = norsar_log.create_log("norsar")   
         log.info("=========== START IMPORT ===========")
-        status = import_norsar_files(log, dir_import)
+        
+        dir_script = Path(__file__).parent.absolute() # Path to this script
+        dir_work = dir_script / "work" # Path to work directory
+        os.makedirs(dir_work, exist_ok = True) # Create work directory
+        
+        files = fetch_files(log, dirname)
+        
         log.info("=========== END IMPORT ===========")
         sys.exit(status)    
     except Exception as ex:            
         print(str(ex))    
-        sys.exit(ExitStatus.Error)    
+        sys.exit(ExitStatus.Error)        
+
+if __name__ == "__main__":
+    import_norsar_files(dir_import)
