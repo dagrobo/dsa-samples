@@ -5,7 +5,13 @@ __pycache__/
 
 # Custom
 work/
+ignore/
 norsar.log
+CTBTphd.txt
+IO_BUFF.$$$
+SP_BUFF.$$$
+dummy.txt
+*.LIS
 
 # C extensions
 *.so
